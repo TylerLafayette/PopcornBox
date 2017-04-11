@@ -1,0 +1,26 @@
+{
+  "name": "popcornbox",
+  "version": "1.0.0",
+  "description": "------- ### What is PopcornBox? ------- PopcornBox is a simple media center for the Pine 64.",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylerLafayette/PopcornBox.git"
+  },
+  "author": "Tyler Lafayette",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TylerLafayette/PopcornBox/issues"
+  },
+  "homepage": "https://github.com/TylerLafayette/PopcornBox#readme",
+  "dependencies": {
+    "electron-prebuilt-compile": "^1.6.2"
+  },
+  "devDependencies": {
+    "babel-preset-es2016-node5": "^1.1.2",
+    "babel-preset-react": "^6.24.1"
+  }
+}
