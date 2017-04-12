@@ -1,4 +1,5 @@
-# PopcornBox 
+![PopcornBox Logo](https://raw.githubusercontent.com/TylerLafayette/PopcornBox/master/assets/pblogo.png)  
+
 -------
 ### What is PopcornBox?
 -------
