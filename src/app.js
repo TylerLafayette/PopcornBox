@@ -8,9 +8,9 @@ app.on('window-all-closed', () => {
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
-    width: 700,
-    height: 760,
-    titleBarStyle: 'hidden-inset'
+    width: 1920,
+    height: 1080,
+    frame: false
   })
 
   mainWindow.loadURL(`file://${__dirname}/renderer/index.html`)

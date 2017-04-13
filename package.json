@@ -17,10 +17,17 @@
   },
   "homepage": "https://github.com/TylerLafayette/PopcornBox#readme",
   "dependencies": {
-    "electron-prebuilt-compile": "^1.6.2"
+    "electron-prebuilt-compile": "^1.6.2",
+    "node-sass": "^4.5.2",
+    "react": "^15.5.4",
+    "react-addons-css-transition-group": "^15.5.2",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.0",
+    "react-router-dom": "^4.1.0"
   },
   "devDependencies": {
     "babel-preset-es2016-node5": "^1.1.2",
-    "babel-preset-react": "^6.24.1"
+    "babel-preset-react": "^6.24.1",
+    "electron-compilers": "^5.7.0"
   }
 }

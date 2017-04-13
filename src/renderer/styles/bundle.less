@@ -1,0 +1,258 @@
+/*
+                      -/oyhhhys+:`
+                     /yhhhhhhhhhhhho.
+                -:/+hdddhhhhhhhhhhhhh:
+             :ymmmmmmmmmmmdhhhhhhhhhhh-
+           -hmmmmmmmmmmmmmmmdhhhhhhhhhs.`
+          :mmmmmmmmmmmmmmmmmmdhhhhhhhhhhhs/.
+         `dmmmmmmmmmmmmmmmmmmmddddhhhhhhhhhh+`
+    -+shhdmmmmmmmmmmmmmmmmmmmmmmmmmmdhhhhhhhho
+  `odmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmdhhhhhhh-
+  ommmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmdddddhh/
+ `hmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmdh:`
+sdyoyNNmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmNmsodd:
+NNy++NNyshNNmmmmmmmmmmmmmmmmmmmmmmmmmNNyodNm++mNs
+NNy++NNy+oNNyydNNmmmmmmmmmmmmmmmNNhshNN++hNd++mNs
+mmy++NNy+oNNs+sMNsydNNmmmmmNNdyyMM++yNN++hNd++dms
+mmy++NNy+oNNs+sNMo+yMNyhmhyMMo+sMN++yNm++hNd++dms
+mmy++mms+oNNs+sNNo+yMN++o+oMMo+sNN++yNm++hmd++dms
+mmy++mms+oNNs+sNNo+yMN++++oMMo+sNN++yNm++hmd++dms
+mmy++mms+omNs+sNNo+yNN++++oNNo+sNNo+yNm++hmd++dms
+mmy+omms+omms+sNNo+yNN++++oNNo+sNNo+ymm++hmd++dmo
+ddy++mms+omms+sNNo+yNN++++oNNo+sNNo+ymm++hmd++ddo
+ddy++mms+omms+smmo+yNN++++oNNo+smmo+ymm++hmh++ddo
+ddy++dms+omms+smmo+yNm++++oNNo+smmo+ymd++ymh++hdo
+ddy++dds+omms+smmo+yNm++++oNNo+smmo+ymd++ydh++hdo
+ddy++dds+omms+smmo+ymm++++ommo+smmo+ymd++ydh++hdo
+dds++dds+oddo+smmo+ymm++++ommo+smmo+ydd++ydh++hdo
+hds++dds+oddo+smmo+ymm++++ommo+smmo+ydd++ydh++hdo
+ohs++dds+oddo+sdmo+ymm++++ommo+smdo+ydd++ydh++hh-
+ :+++dds+oddo+sddo+ymd++++ommo+sddo+ydd++ydy+/+.
+    `:+++oddo+sddo+ymd++++ommo+sddo+sdh+++/-`
+        `./so+sddo+ydd++++oddo+sddo+oo:`
+             `-oyo+sdd++++oddo+os+.`
+                 `./yh+/-/ohs-`                   <-- its the logo!
+    PopcornBox
+   <---------->
+    Originally written by Tyler Lafayette in 2017
+ */
+// global styles
+body {
+  font-family: 'Roboto', sans-serif;
+  -webkit-user-select: none;
+  cursor: default;
+}
+#app, body, html {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.wrapper, .menu-wrapper {
+  width: 100%;
+  height: 100%;
+}
+// Home module
+.app-icons-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app-icons {
+  width: 100%;
+  align-self: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  vertical-align: middle;
+  flex: 1;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex-shrink: 0;
+  flex-grow: 0;
+  padding: 20px;
+}
+.app-icon {
+  perspective: 1000px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  width: 400px;
+  height: 200px;
+  border-radius: 5px;
+  box-shadow: 0 8px 30px rgba(14, 21, 47, 0.6);
+  transform: perspective(1000px);
+  transition: 0.5s ease;
+  background: linear-gradient(to bottom, rgba(235,235,235,1) 0%, rgba(168,168,168,1) 100%);
+  .before {
+    content: '';
+    width: 100%;
+    height: 50%;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+  .after {
+    content: '';
+    width: 100%;
+    height: 50%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+  }
+  .img {
+    width: 300px;
+    height: 150px;
+    background-size: contain;
+    background-position: center center;
+    transition: 0.3s ease;
+    background-repeat: no-repeat;
+    margin: auto;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%) scale(1);
+    position: relative;
+  }
+}
+.app-icon.netflix {
+  background: linear-gradient(to bottom, #202020 0%, black 100%);
+}
+.app-icon.playmusic {
+  background: linear-gradient(to bottom, #f7f7f7 0%, #bbbbbb 100%)
+}
+.cards-enter-appear {
+  animation: card-enter 500ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  animation-delay: 300ms;
+  animation-timing-function: /* cubic-bezier(0.100, 0.365, 0.175, 1.000)*/ cubic-bezier(1.000, 0.000, 0.000, 1.650);
+  @keyframes card-enter {
+    0% {
+      transform: scale(1.3) perspective(2000px) rotate3d(1,0,0, 0deg);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1) perspective(2000px) rotate3d(1,0,0, 0deg);
+      opacity: 1;
+    }
+  }
+}
+.app-icon:hover {
+  transform: scale(1.05) perspective(1000px);
+  box-shadow: 0 55px 100px rgba(14,21,47,0.4), 0 16px 40px rgba(14,21,47,0.4);
+  .img {
+     transform: translateY(-50%) scale(1.1);
+  }
+}
+.menu-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../assets/blur-bg.png');
+}
+.app-icon.hover_top {
+  transform: scale(1.05) perspective(1000px) rotate3d(1,0,0,20deg);
+}
+.app-icon.hover_bottom {
+  transform: scale(1.05) perspective(1000px) rotate3d(1,0,0,-20deg);
+}
+
+// module: Popcorn Time
+.popcorn-time-main-header {
+  position: absolute;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  height: 135px;
+  box-sizing: border-box;
+}
+.popcorn-time-main-header-head-text {
+  font-size: 72px;
+  color: white;
+  display: inline-block;
+  padding: 25px;
+  font-weight: bold;
+}
+.popcorn-time-main-cover-wrapper {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  .popcorn-time-main-cover-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center top;
+  }
+  .popcorn-time-main-cover-color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #3f51b5;
+    opacity: 0.4;
+  }
+  .popcorn-time-main-cover-info-wrapper {
+    position: absolute;
+    bottom: 40px;
+    z-index: 10;
+    left: 40px;
+    .popcorn-time-main-cover-title-text {
+      font-size: 56px;
+      color: white;
+      font-weight: 400;
+      display: block;
+    }
+    .popcorn-time-main-cover-subtext {
+      font-size: 28px;
+      color: white;
+      display: block;
+    }
+    .popcorn-time-main-cover-info-rating-bar-wrapper {
+      width: 300px;
+      height: 5px;
+      position: relative;
+      display: block;
+      top: 5px;
+      background-color: rgba(255,255,255,0.3);
+      .popcorn-time-main-cover-info-rating-bar-inner {
+        height: 5px;
+        background-color: white;
+      }
+    }
+  }
+}
+.popcorn-time-main-content {
+  width: 100%;
+  padding-top: 15px;
+  .popcorn-time-main-content-header {
+    width: 100%;
+    .popcorn-time-tab-center-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .popcorn-time-tabs {
+        display: inline-block;
+        .pt-tab {
+          color: #3f51b5;
+          text-transform: uppercase;
+          font-size: 18px;
+          padding: 20px 30px;
+          display: inline-block;
+          border-bottom: 3px solid transparent;
+          transition: 0.3s ease;
+          letter-spacing: 1px;
+          &.active {
+            border-bottom: 3px solid #3f51b5;
+          }
+        }
+      }
+    }
+  }
+}
