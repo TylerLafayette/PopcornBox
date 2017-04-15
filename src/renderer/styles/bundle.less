@@ -41,6 +41,7 @@ body {
   font-family: 'Roboto', sans-serif;
   -webkit-user-select: none;
   cursor: default;
+  background: rgb(69, 69, 69);
 }
 #app, body, html {
   width: 100%;
@@ -53,6 +54,9 @@ body {
   height: 100%;
 }
 // Home module
+.wrapper {
+  overflow-y: scroll;
+}
 .menu-top-left-wrapper {
   position: absolute;
   top: 40px;
@@ -156,12 +160,22 @@ body {
   }
 }
 .menu-background {
-  width: 100%;
-  height: 100%;
+  width: 106%;
+  height: 106%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -3%;
+  left: -3%;
+  filter: blur(51px);
+  -webkit-filter: blur(10px);
   z-index: -10;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  transform: translate3d(0,0,0);
+  transform: translateZ(0);
   background-size: cover;
   background-position: center;
   background-image: url('https://farm4.staticflickr.com/3708/10522644124_c93075163a_k_d.jpg');
@@ -174,6 +188,13 @@ body {
 }
 
 // module: Popcorn Time
+.popcorn-time-main-wrapper {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background: black;
+  width: 100%;
+  height: 100%;
+}
 .popcorn-time-main-header {
   position: absolute;
   top: 0;
@@ -191,13 +212,24 @@ body {
 }
 .popcorn-time-main-cover-wrapper {
   width: 100%;
-  height: 600px;
-  position: relative;
+  height: 800px;
+  position: absolute;
+  animation: fadeIn 1250ms;
+  @keyframes fadeIn {
+    0% {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
   .popcorn-time-main-cover-image {
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center top;
+    background-position: center 25%;
   }
   .popcorn-time-main-cover-color-overlay {
     position: absolute;
@@ -205,7 +237,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #3f51b5;
+    background: #000000;
     opacity: 0.4;
   }
   .popcorn-time-main-cover-info-wrapper {
@@ -240,6 +272,9 @@ body {
 }
 .popcorn-time-main-content {
   width: 100%;
+  position: relative;
+  top: 250px;
+  color: white;
   padding-top: 15px;
   .popcorn-time-main-content-header {
     width: 100%;
@@ -250,7 +285,7 @@ body {
       .popcorn-time-tabs {
         display: inline-block;
         .pt-tab {
-          color: #3f51b5;
+          color: white;
           text-transform: uppercase;
           font-size: 18px;
           padding: 20px 30px;
@@ -259,8 +294,103 @@ body {
           transition: 0.3s ease;
           letter-spacing: 1px;
           &.active {
-            border-bottom: 3px solid #3f51b5;
+            border-bottom: 3px solid white;
           }
+        }
+      }
+    }
+  }
+  .popcorn-time-covers-container {
+    padding: 0px 100px;
+    margin-top: 50px;
+    .popcorn-time-covers-flexbox {
+      display: flex;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+      justify-content: center;
+      width: 100%;
+      .popcorn-time-covers-item {
+        opacity: 0;
+        overflow: hidden;
+        height: 375px;
+        animation: cover-enter 800ms;
+        animation-timing-function: cubic-bezier(0.100, 0.365, 0.175, 1.000);
+        animation-fill-mode: backwards;
+        @keyframes cover-enter {
+          0% {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0px);
+            opacity: 1;
+          }
+        }
+        margin: 5px 5px;
+        width: 250px;
+        box-sizing: border-box;
+        transition: 0.4s cubic-bezier(0.100, 0.365, 0.175, 1.000);
+        &.selected {
+          transform: scale(1.2);
+          .popcorn-time-covers-cover-img {
+            background-position-y: -10px;
+            .popcorn-time-covers-cover-info-panel {
+              bottom: 0px;
+              .popcorn-time-covers-cover-info-fab {
+                transform: scale(1);
+              }
+            }
+          }
+        }
+        &:hover {
+          .popcorn-time-covers-cover-img {
+            .popcorn-time-covers-cover-info-panel {
+              bottom: 0px;
+              .popcorn-time-covers-cover-info-fab {
+                transform: scale(1);
+              }
+            }
+          }
+        }
+        .popcorn-time-covers-cover-img {
+          transition: 0.3s cubic-bezier(0.100, 0.365, 0.175, 1.000);
+          background-color: white;
+          background-image: url('../assets/broken-image-01.png');
+          width: 250px;
+          height: 375px;
+          background-size: cover;
+          background-position: center 0px;
+          background-repeat: no-repeat;
+          .popcorn-time-covers-cover-info-panel {
+            width: 100%;
+            height: 150px;
+            padding: 20px;
+            box-sizing: border-box;
+            background: rgba(210, 47, 47, 1);
+            bottom: -150px;
+            transition: 0.4s cubic-bezier(0.100, 0.365, 0.175, 1.000);
+            position: absolute;
+            .popcorn-time-covers-cover-info-fab {
+              width: 75px;
+              height: 75px;
+              background: #ff5722;
+              border-radius: 40px;
+              position: absolute;
+              top: -40px;
+              transition: 0.4s cubic-bezier(0.100, 0.365, 0.175, 1.000);
+              box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
+              transform: scale(0);
+              right: 10px;
+            }
+            .popcorn-time-covers-cover-info-title {
+              font-size: 20px;
+              width: 75%;
+              display: inline-block;
+            }
+          }
+        }
+        .popcorn-time-covers-cover-title {
+          font-size: 24px;
         }
       }
     }

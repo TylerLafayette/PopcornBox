@@ -73,7 +73,7 @@ export default class HomeMenu extends Component {
             transitionAppear={true}
             className="app-icons-container">
             <div className="app-icons">
-              <Link to="/pt" className="app-icon">
+              <Link to="/pt/movies" className="app-icon">
                 <div className="img" style={{backgroundImage:'url(https://upload.wikimedia.org/wikipedia/commons/6/6c/Popcorn_Time_logo.png)'}}></div>
                 <div className="before"></div>
                 <div className="after"></div>
