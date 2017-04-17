@@ -158,7 +158,7 @@ var opts = {}
   // Parse blocklist
   if (opts.blocklist) opts.blocklist = parseBlocklist(opts.blocklist)
 
-  var engine = torrentStream('magnet:?xt=urn:btih:3bd437314a23e67e2845c1ca1a1f652a90d3ddcd&dn=Rick.and.Morty.S03E01.HDTV.x264-W4F%5Beztv%5D.mkv%5Beztv%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A80&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969',opts) 
+  var engine = torrentStream('<magnet>',opts) 
 
   // Just want torrent-stream to list files.
   if (opts.list) return engine
