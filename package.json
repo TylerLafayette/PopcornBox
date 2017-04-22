@@ -4,7 +4,8 @@
   "description": "------- ### What is PopcornBox? ------- PopcornBox is a simple media center for the Pine 64.",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
