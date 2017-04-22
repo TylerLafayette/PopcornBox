@@ -44,16 +44,22 @@ export default class PopcornTime extends Component {
     switch(e.keyCode) {
       case 39:
         this.setState({currSelected: this.state.currSelected + 1})
+        e.preventDefault();
         break;
       case 37:
         this.setState({currSelected: this.state.currSelected - 1})
+        e.preventDefault();
         break;
       case 40:
         this.setState({currSelected: this.state.currSelected + 6})
+        e.preventDefault();
         break;
       case 38:
         this.setState({currSelected: this.state.currSelected - 6})
+        e.preventDefault();
         break;
+      case 13:
+        document.getElementsByClassName('popcorn-time-covers-item')[this.state.currSelected].click();
     }
   }
   componentDidMount() {

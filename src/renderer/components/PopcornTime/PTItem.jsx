@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import history from '../../history.js'
 
 export default class PTItem extends Component {
   constructor() {
@@ -25,11 +26,15 @@ export default class PTItem extends Component {
       document.getElementsByClassName('popcorn-time-main-wrapper')[0].scrollTop = this.findPos(this.refs.me) - ((window.innerHeight /2) - (375/2));
     }
   }
+  clicked() {
+    const { item } = this.props;
+    history.push('/movies/' + item._id);
+  }
   render() {
     const { i, item, currSelected } = this.props;
     console.log(this)
     return (
-      <div ref="me"
+      <div onClick={this.clicked.bind(this)} ref="me"
         style={
           {
             animationDelay: ((75) * (i + 1)) + "ms",
@@ -41,7 +46,7 @@ export default class PTItem extends Component {
           backgroundImage: 'url('+ item.images.poster.replace('images/posterholder.png', '../assets/broken-image-01.png') +')'
         }}>
           <div className='popcorn-time-covers-cover-info-panel'>
-            <div className='popcorn-time-covers-cover-info-fab'></div>
+            <div className='popcorn-time-covers-cover-info-fab'><i className="material-icons">play_arrow</i></div>
             <span className='popcorn-time-covers-cover-info-title'>{item.title}</span>
           </div>
         </div>

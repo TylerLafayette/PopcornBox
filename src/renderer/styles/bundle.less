@@ -316,16 +316,17 @@ body {
         opacity: 0;
         overflow: hidden;
         height: 375px;
+        transform-origin: top left;
         animation: cover-enter 800ms;
         animation-timing-function: cubic-bezier(0.100, 0.365, 0.175, 1.000);
         animation-fill-mode: backwards;
         @keyframes cover-enter {
           0% {
-            transform: translateY(20px);
+            transform: translateY(20px) rotate(2.5deg);
             opacity: 0;
           }
           100% {
-            transform: translateY(0px);
+            transform: translateY(0px) rotate(0deg);
             opacity: 1;
           }
         }
@@ -363,6 +364,7 @@ body {
           height: 375px;
           background-size: cover;
           background-position: center 0px;
+          overflow: hidden;
           background-repeat: no-repeat;
           .popcorn-time-covers-cover-info-panel {
             width: 100%;
@@ -376,7 +378,7 @@ body {
             .popcorn-time-covers-cover-info-fab {
               width: 75px;
               height: 75px;
-              background: #ff5722;
+              background: #3a3a3a;
               border-radius: 40px;
               position: absolute;
               top: -40px;
@@ -384,6 +386,13 @@ body {
               box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
               transform: scale(0);
               right: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              i {
+                font-size: 48px;
+                align-self: center;
+              }
             }
             .popcorn-time-covers-cover-info-title {
               font-size: 20px;

@@ -8,6 +8,7 @@ export default class PopcornTime extends Component {
   constructor() {
     super()
     this.state = {
+      currSelected: 0,
       spinner: true,
       shows: [
       ],
@@ -39,11 +40,33 @@ export default class PopcornTime extends Component {
       console.log('shows updated');
     })
   }
+  keyUp(e) {
+    switch(e.keyCode) {
+      case 39:
+        this.setState({currSelected: this.state.currSelected + 1})
+        e.preventDefault();
+        break;
+      case 37:
+        this.setState({currSelected: this.state.currSelected - 1})
+        e.preventDefault();
+        break;
+      case 40:
+        this.setState({currSelected: this.state.currSelected + 6})
+        e.preventDefault();
+        break;
+      case 38:
+        this.setState({currSelected: this.state.currSelected - 6})
+        e.preventDefault();
+        break;
+    }
+  }
   componentDidMount() {
+    this.keyUp = this.keyUp.bind(this)
     this.setState({
       activePage: this.props.match.params.type
     })
     console.log(this)
+    document.addEventListener('keyup', this.keyUp, false);
   }
   render() {
     return (
@@ -54,7 +77,7 @@ export default class PopcornTime extends Component {
           </div>
           {
             this.state.shows[0] ?
-            <PTHead item={this.state.shows[0]}/>
+            <PTHead movie={true} item={this.state.shows[0]}/>
             :
             null
           }
@@ -94,7 +117,7 @@ export default class PopcornTime extends Component {
             <div className='popcorn-time-covers-flexbox'>
               {this.state.shows.map((item, i) => {
                 return(
-                  <PTItem item={item} i={i} />
+                  <PTItem currSelected={this.state.currSelected} item={item} i={i} />
                 )
               })}
             </div>
