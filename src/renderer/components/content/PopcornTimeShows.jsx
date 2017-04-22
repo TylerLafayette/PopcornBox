@@ -14,7 +14,7 @@ export default class PopcornTime extends Component {
       ],
       movies: [],
       animes: [],
-      activePage: 'shows',
+      activePage: 'movies',
       types: [
         {
           name: "Movies",
@@ -58,6 +58,10 @@ export default class PopcornTime extends Component {
         this.setState({currSelected: this.state.currSelected - 6})
         e.preventDefault();
         break;
+      case 13:
+        e.preventDefault()
+        console.log(document.getElementsByClassName('popcorn-time-covers-item')[this.state.currSelected])
+        document.getElementsByClassName('popcorn-time-covers-item')[this.state.currSelected].click();
     }
   }
   componentDidMount() {
@@ -117,7 +121,7 @@ export default class PopcornTime extends Component {
             <div className='popcorn-time-covers-flexbox'>
               {this.state.shows.map((item, i) => {
                 return(
-                  <PTItem currSelected={this.state.currSelected} item={item} i={i} />
+                  <PTItem currSelected={this.state.currSelected} type='movie' item={item} i={i} />
                 )
               })}
             </div>

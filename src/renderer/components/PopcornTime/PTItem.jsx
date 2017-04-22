@@ -27,8 +27,8 @@ export default class PTItem extends Component {
     }
   }
   clicked() {
-    const { item } = this.props;
-    history.push('/movies/' + item._id);
+    const { item,type } = this.props;
+    history.push(`/pt/${type}/${item._id}`);
   }
   render() {
     const { i, item, currSelected } = this.props;

@@ -408,3 +408,41 @@ body {
     }
   }
 }
+.popcorn-time-summary-wrapper {
+  width: 100%;
+  height: 100%;
+  background: black;
+  overflow-y: scroll;
+  .summary-wrap {
+    .summary-content {
+      position: relative;
+      z-index: 10;
+      top: 500px;
+    }
+  }
+  .loader-wrapper {
+    width: 100%;
+    height: 100%;
+    background: #282828;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .loader-box {
+      align-self: center;
+      .material-icons {
+        color: white;
+        font-size: 90px;
+        animation: spinner-spin 1s linear;
+        animation-iteration-count: infinite;
+        @keyframes spinner-spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
+    }
+  }
+}
