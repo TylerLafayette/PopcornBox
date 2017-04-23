@@ -121,7 +121,7 @@ export default class PopcornTime extends Component {
             <div className='popcorn-time-covers-flexbox'>
               {this.state.shows.map((item, i) => {
                 return(
-                  <PTItem currSelected={this.state.currSelected} type='movie' item={item} i={i} />
+                  <PTItem currSelected={this.state.currSelected} type='show' item={item} i={i} />
                 )
               })}
             </div>

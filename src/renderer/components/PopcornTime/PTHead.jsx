@@ -10,7 +10,8 @@ export default class PTHead extends Component {
   }
   componentDidMount() {
     this.scroll = this.scroll.bind(this)
-    document.getElementsByClassName('popcorn-time-main-wrapper')[0].addEventListener('scroll', this.scroll)
+    if(document.getElementsByClassName('popcorn-time-main-wrapper')[0])
+      document.getElementsByClassName('popcorn-time-main-wrapper')[0].addEventListener('scroll', this.scroll)
   }
   render() {
     return (

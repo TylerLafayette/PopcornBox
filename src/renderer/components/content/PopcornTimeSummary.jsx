@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import PTHead from '../PopcornTime/PTHead.jsx'
+import history from '../../history.js'
 
 export default class PopcornTimeSummary extends Component {
   constructor() {
@@ -17,10 +18,13 @@ export default class PopcornTimeSummary extends Component {
     switch(this.props.match.params.type) {
       case 'movie':
         this.fetchMovie()
-      case 'shows':
+        break;
+      case 'show':
         this.fetchShow()
+        break;
       case 'anime':
         this.fetchAnime()
+        break;
     }
   }
   fetchMovie() {
@@ -63,6 +67,10 @@ export default class PopcornTimeSummary extends Component {
       isLoading: false
     })
   }
+  back() {
+    console.log('hello')
+    history.goBack()
+  }
   render() {
     return (
       <div className='popcorn-time-summary-wrapper'>
@@ -77,7 +85,10 @@ export default class PopcornTimeSummary extends Component {
             <div className='summary-wrap'>
               <PTHead item={this.state.data} />
               <div className='summary-content'>
-                <span className='summary-title'>{this.state.data.title}</span>
+                <div className='summary-header-content'>
+                  <i onClick={this.back.bind(this)} className='material-icons back-arrow'>arrow_back</i>
+                  <span className='summary-title'>{this.state.data.title}</span>
+                </div>
               </div>
             </div>
           )
