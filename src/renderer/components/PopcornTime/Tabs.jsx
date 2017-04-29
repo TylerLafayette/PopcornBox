@@ -40,8 +40,7 @@ export default class Tabs extends Component {
             var item = labels(item, i)
             return item;
           }else {
-            console.log('hi')
-            var items = [];
+            var items = []
             item.map((object, iter) => {
               items.push(labels(object, iter + i))
             })
@@ -54,7 +53,7 @@ export default class Tabs extends Component {
   _renderContent() {
     return (
       <div className="popcorn-time-tabs-content">
-        {this.props.children[this.state.selected]}
+        {this.state.selected > 0 ? this.props.children[1][this.state.selected - 1] : this.props.children[this.state.selected]}
       </div>
     );
   }

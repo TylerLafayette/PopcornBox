@@ -51,6 +51,7 @@ export default class PopcornTimeSummary extends Component {
           data: response.data,
           type: 'show'
         })
+        console.log("Data")
         console.log(response.data)
         this.finishLoading()
       })
@@ -67,26 +68,56 @@ export default class PopcornTimeSummary extends Component {
       })
   }
   finishLoading() {
-    this.setState({
-      isLoading: false
-    })
+    this.getSeasons(() => this.setState({ isLoading: false }))
   }
   back() {
     console.log('hello')
     history.goBack()
   }
-  getSeasons() {
-    var tempSeasons = []
-    console.log(this.state.data.num_seasons)
-    for(var i = 0; i < this.state.data.num_seasons; i++) {
-      var name = "Season " + (i+1)
-      tempSeasons.push(name)
+  getSeasons(callback) {
+    let seasonsSet = new Set()
+    for (var i = 0; i < this.state.data.episodes.length; i++) {
+      seasonsSet.add(this.state.data.episodes[i].season)
     }
-    return tempSeasons
+    console.log(seasonsSet)
+    var seasons = [];
+    for (let item of seasonsSet.values()) {
+      var season = {
+        name: "Season " + item,
+        num: item,
+        episodes: []
+      }
+      var episodes = [];
+      for (var i = 0; i < this.state.data.episodes.length; i++) {
+        if(this.state.data.episodes[i].season == item) {
+          episodes.push(this.state.data.episodes[i])
+        }
+      }
+      episodes.sort(function(a, b) {
+        if(a.episode < b.episode) return -1;
+        if(a.episode > b.episode) return 1;
+        return 0;
+      })
+      season.episodes = episodes;
+      seasons.push(season)
+    };
+    seasons.sort(function(a, b) {
+      if(a.num < b.num) return -1;
+      if(a.num > b.num) return 1;
+      return 0;
+    })
+    console.log(seasons)
+    // var tempSeasons = []
+    // console.log(this.state.data.num_seasons)
+    // for(var i = 0; i < this.state.data.num_seasons; i++) {
+    //   var name = "Season " + (i+1)
+    //   tempSeasons.push(name)
+    // }
+    // return tempSeasons
   }
   render() {
     if(this.state.data) {
-      var seasons = ['Season 1', 'Season 2', 'Season 3']
+      var seasons = this.getSeasons()
     }
     console.log(seasons);
     return (
