@@ -154,7 +154,7 @@ export default class PopcornTimeSummary extends Component {
                               </div>
                               <div className='details'>
                                 <span className='episode-title'>{episode.title}</span>
-                                <span className='episode-desc'>{episode.overview.trunc(250)}</span>
+                                <span className='episode-desc'>{episode.overview ? episode.overview.trunc(250) : null}</span>
                               </div>
                             </div>
                           </div>)
