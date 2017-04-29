@@ -15,7 +15,10 @@ import PopcornTimeSummary from './components/content/PopcornTimeSummary.jsx'
 window.onload = function() {
   console.log('fully loaded');
 }
-
+String.prototype.trunc = String.prototype.trunc ||
+      function(n){
+          return (this.length > n) ? this.substr(0, n-1) + '...' : this;
+      };
 render(
 <Router history={history}>
   <Wrapper>

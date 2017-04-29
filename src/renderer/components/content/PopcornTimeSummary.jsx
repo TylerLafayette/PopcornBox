@@ -68,7 +68,7 @@ export default class PopcornTimeSummary extends Component {
       })
   }
   finishLoading() {
-    this.getSeasons(() => this.setState({ isLoading: false }))
+    this.getSeasons((seasons) => this.setState({ isLoading: false, seasons: seasons }))
   }
   back() {
     console.log('hello')
@@ -106,7 +106,7 @@ export default class PopcornTimeSummary extends Component {
       if(a.num > b.num) return 1;
       return 0;
     })
-    console.log(seasons)
+    callback(seasons)
     // var tempSeasons = []
     // console.log(this.state.data.num_seasons)
     // for(var i = 0; i < this.state.data.num_seasons; i++) {
@@ -117,9 +117,8 @@ export default class PopcornTimeSummary extends Component {
   }
   render() {
     if(this.state.data) {
-      var seasons = this.getSeasons()
+      var seasons = this.state.seasons
     }
-    console.log(seasons);
     return (
       <div className='popcorn-time-summary-wrapper'>
         {this.state.isLoading ?
@@ -140,12 +139,26 @@ export default class PopcornTimeSummary extends Component {
                 <div className='tabs-section'>
                   <Tabs selected={0}>
                     <Pane label="Summary">
-                      <div>This is my tab 1 contents!</div>
+                      <div>{this.state.data.synopsis}</div>
                     </Pane>
                     {seasons.map((item, i) => {
                       console.log('hel')
-                      return (<Pane key={i} ref="hi" label={item}>
-                        <div>This is my {item} contents!</div>
+                      return (<Pane key={i} ref="hi" label={item.name}>
+                        {item.episodes.map((episode, iter) => {
+                          return (<div className='pt-episode' style={{
+                            animationDelay: (0.05 * iter) + "s"
+                          }}>
+                            <div className='pt-ep-wrap'>
+                              <div className='badge'>
+                                <span className='episode-badge-num'>{iter+1}</span>
+                              </div>
+                              <div className='details'>
+                                <span className='episode-title'>{episode.title}</span>
+                                <span className='episode-desc'>{episode.overview.trunc(250)}</span>
+                              </div>
+                            </div>
+                          </div>)
+                        })}
                       </Pane>);
                     })}
                   </Tabs>

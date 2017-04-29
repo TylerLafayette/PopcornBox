@@ -441,6 +441,66 @@ body {
         position: relative;
         top: 100px;
         text-align: center;
+        .pt-episode {
+          text-align: left;
+          border-bottom: 1px solid rgba(255,255,255,0.3);
+          border-top: 1px solid rgba(255,255,255,0.3);
+          margin-top: 5px;
+          position: relative;
+          width: 100%;
+          display: flex;
+          height: 100px;
+          animation: episode-appear 0.3s;
+          animation-fill-mode: forwards;
+          transition: 0.2s ease;
+          opacity: 0;
+          background: rgba(255,255,255,0);
+          @keyframes episode-appear {
+            0% {
+              transform: translateY(10px);
+              opacity: 0;
+            }
+            100% {
+              transform: translateY(0px);
+              opacity: 1;
+            }
+          }
+          &:hover {
+            background: rgba(255,255,255,0.1);
+          }
+          .pt-ep-wrap {
+            display: flex;
+            .badge {
+              display: inline-block;
+              width: 100px;
+              height: 100px;
+              align-self: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              .episode-badge-num {
+                align-self: center;
+                font-size: 48px;
+                color: white;
+              }
+            }
+            .details {
+              position: relative;
+              top: 31px;
+              display: inline-block;
+              .episode-title {
+                font-size: 18px;
+                display: block;
+                color: white;
+              }
+              .episode-desc {
+                font-size: 14px;
+                display: block;
+                color: #888;
+              }
+            }
+          }
+        }
         .popcorn-time-tabs {
           .pt-tab {
             color: white;
